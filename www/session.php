@@ -19,24 +19,19 @@
         ),
     );
 
-    if ($_GET['logout']) {
-        session_destroy();
-        $isLogged = false;
-    }
-
     $mail = $_POST['mail'];
     $password = $_POST['password'];
     $isLogged = isset($_SESSION['logged']);
 
-    echo "Is connected? " . ($isLogged ? "true" : "false");
-    echo "<br/>Tracking info - Mail = " . $mail . " - Password - " . $password;
+    //echo "Is connected? " . ($isLogged ? "true" : "false");
+    //echo "<br/>Tracking info - Mail = " . $mail . " - Password - " . $password;
 
     if (!$isLogged) {
         foreach ($users as $user) {
-            echo "<br/>Looking for " . $user['username'] . " (" . $user['mail'] . ", ". $user['password'] . ")";
+            //echo "<br/>Looking for " . $user['username'] . " (" . $user['mail'] . ", ". $user['password'] . ")";
 
             if ($user['mail'] == $mail && $user['password'] == $password) {
-                echo "<br/>Connected!";
+                //echo "<br/>Connected!";
                 $_SESSION['mail'] = $user['mail'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['logged'] = true;
@@ -69,9 +64,7 @@
 
         <h1>Vous êtes connecté</h1>
 
-        <p>Bonjour <?= $_SESSION['username'] ?> !</p>
-        
-        <a href="?logout=true">Se déconnecter</a>
+        <p>Bonjour <?= $_SESSION['username'] ?> ! <a href="./exercice1.php">Cliquez ici</a> pour retourner aux exercices.</p>
     <?php } ?>
 
     </body>

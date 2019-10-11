@@ -1,10 +1,14 @@
 <?php
     session_start();
 
-    if ($_SESSION['isLogged']) {
+    if ($_SESSION['logged'] == true) {
         $name = $_SESSION['username'];
+        $url = "./logout.php";
+        $action = "déconnecter";
     } else {
         $name = "Invité";
+        $url = "./session.php";
+        $action = "connecter";
     }
 ?>
 
@@ -17,4 +21,4 @@
     <body>
         <h1>Exercice <?= $page ?></h1>
 
-        <p>Bonjour, <?= $name ?></p>
+        <p>Bonjour, <?= $name ?>. <a href="<?= $url ?>">Cliquez ici</a> pour vous <?= $action ?>.</p>
